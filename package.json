@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Frontend estático para el escáner de QR del evento.",
   "scripts": {
-    "build:scanner": "sed s/WEB_APP_URL_PLACEHOLDER/'$WEB_APP_URL'/g scanner.js",
-    "build": "npm run build:scanner"
+    "build:scanner": " env && sed s/WEB_APP_URL_PLACEHOLDER/'$WEB_APP_URL'/g scanner.js",
+    "build": "npm run build --output public"
   },
   "dependencies": {
     "jsqr": "^1.4.0"

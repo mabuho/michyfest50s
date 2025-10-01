@@ -91,7 +91,7 @@ function handleFailure(error) {
     setTimeout(() => {
         showResult('Esperando escaneo...', 'pending');
         scanning = false;
-    }, timeOut);
+    }, 5000);
 }
 
 startScanner();

@@ -1,20 +1,9 @@
 {
-  "builds": [
-    {
-      "src": "scanner.js",
-      "use": "@vercel/static-build",
-      "buildCommand": "npm run build:scanner"
-    }
-  ],
   "build": {
     "env": {
       "WEB_APP_URL": "$NEXT_PUBLIC_WEB_APP_URL"
     }
   },
-  "routes": [
-    {
-      "src": "/.*",
-      "dest": "/index.html"
-    }
-  ]
+  "installCommand": "npm install", 
+  "buildCommand": "npm run build:scanner"
 }

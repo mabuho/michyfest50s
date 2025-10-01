@@ -1,4 +1,4 @@
-const WEB_APP_URL =  process.env.NEXT_PUBLIC_WEB_APP_URL;
+const WEB_APP_URL = window.WEB_APP_URL_GLOBAL;
 const video = document.getElementById('scanner-video');
 const resultBox = document.getElementById('result-box');
 const loadingOverlay = document.getElementById('loading-overlay');

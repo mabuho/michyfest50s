@@ -1,3 +1,4 @@
+const WEB_APP_URL =  process.env.NEXT_PUBLIC_WEB_APP_URL;
 const video = document.getElementById('scanner-video');
 const resultBox = document.getElementById('result-box');
 const loadingOverlay = document.getElementById('loading-overlay');
@@ -44,11 +45,23 @@ function tick() {
 
             showResult('');
             loadingOverlay.classList.remove('hidden');
+
+            const URL = `${WEB_APP_URL}?qrData=${encodeURIComponent(code.data)}`;
             
-            google.script.run
-                .withSuccessHandler(handleSuccess)
-                .withFailureHandler(handleFailure)
-                .processQRCode(code.data);
+            fetch(URL)
+              .then(response => {
+                  if (!response.ok) {
+                      throw new Error(`Error HTTP: ${response.status}`);
+                  }
+                  return response.json(); // Esperamos una respuesta JSON de Apps Script
+              })
+              .then(data => {
+                  // data.status y data.message vienen de Apps Script (función doGet)
+                  handleServerResponse(data); 
+              })
+              .catch(error => {
+                  handleFailure(error);
+              });
         }
     }
     }
@@ -63,7 +76,7 @@ function handleSuccess(result) {
         showResult(result.message, 'success');
     } else {
         showResult(result.message, 'error');
-        timeOut = 10000;
+        timeOut = 7000;
     }
     setTimeout(() => {
         showResult('Esperando escaneo...', 'pending');
@@ -74,7 +87,7 @@ function handleSuccess(result) {
 function handleFailure(error) {
     loadingOverlay.classList.add('hidden');
         showResult('Error de conexión. Intenta de nuevo.', 'error');
-        console.error(error);
+        console.error('Error de Fetch/Servidor: ' + error);
     setTimeout(() => {
         showResult('Esperando escaneo...', 'pending');
         scanning = false;

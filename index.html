@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base target="_top">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>Michyfest 50's</title>
+        <link rel="shortcut icon" href="https://lh3.googleusercontent.com/d/1zEaoy_W3ARJPqKgbezD2D5pIyYZSjuRv" type="image/png" />
+        <meta property="og:title" content="Michyfest 50's">
+        <meta property="og:image" content="https://lh3.googleusercontent.com/d/1Sn9OI5Q1FvaOQH28H-Muozl2okDwf7sB"/>
+        <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Permanent+Marker&display=swap" rel="stylesheet" />
+        <link href="style.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div id="loading-overlay" class="hidden">
+            <div class="loader"></div>
+            <p>Validando código...</p>
+        </div>
+        
+        <div class="main-container">
+            <div class="header">
+            <div class="welcome-text">
+                <h1>MichyFest 50's</h1>
+                <h2>Acceso Exclusivo</h2>
+            </div>
+            <div class="profile-pic-container">
+                <img id="profile-img" src="https://lh3.googleusercontent.com/d/171wiZw4CoIbircfiTlTzXfxfVYpLqZJk" alt="Perfil" class="profile-pic"> 
+            </div>
+            </div>
+
+            <div id="scanner-container">
+            <video id="scanner-video"></video>
+            <div id="scan-overlay"></div>
+            </div>
+
+            <div id="result-box" class="pending">Esperando escaneo...</div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/jsqr@1.1.0/dist/jsQR.min.js"></script>
+        <script src="https://kit.fontawesome.com/tu-font-awesome-kit.js" crossorigin="anonymous"></script>
+        <script src="scanner.js" ></script>
+    </body>
+</html>

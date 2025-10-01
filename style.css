@@ -1,0 +1,217 @@
+/* VARIABLES DE COLOR (Basadas en la invitación) */
+:root {
+    --color-primary: #8a2be2; /* Azul violeta (Base del fondo) */
+    --color-secondary: #FF69B4; /* Rosa Neón (Acento principal) */
+    --color-accent: #00FFFF; /* Cian Neón (Acento secundario) */
+    --color-text-light: #F0F8FF; /* Blanco brillante */
+    --color-success: #32CD32; /* Lima Green */
+    --color-error: #FF4500; /* Rojo Naranja */
+}
+
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Luckiest Guy', cursive;
+    /* Fondo con gradiente y colores de la invitación */
+    background: linear-gradient(135deg, #4b0082, #8a2be2, #FF69B4); 
+    background-image: url("https://lh3.googleusercontent.com/d/1SgFpmEbsHVTMQCdX74NfN5hpuLHKh0Tm");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    color: var(--color-text-light);
+    overflow: hidden;
+}
+
+/* Contenedor principal para centrar el contenido */
+.main-container {
+    width: 100%;
+    max-width: 900px;
+    height: 90vh;
+    /* Fondo translúcido morado oscuro */
+    background: rgba(40, 0, 70, 0.9); 
+    border-radius: 25px;
+    /* Borde Rosa Neón */
+    border: 4px solid var(--color-secondary); 
+    /* Resplandor Rosa/Cian */
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.8), 0 0 15px rgba(0, 255, 255, 0.5); 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Encabezado con el título y la foto */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.welcome-text {
+    text-align: left;
+    line-height: 0.9;
+}
+.welcome-text h1 {
+    font-size: 5.5em;
+    margin: 0;
+    color: var(--color-accent); /* Cian Neón */
+    /* Sombra que simula el borde de las letras del logo */
+    text-shadow: 4px 4px 0px var(--color-secondary), 
+                5px 5px 0px rgba(0,0,0,0.5); 
+}
+.welcome-text h2 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 3.5em;
+    margin: 10px 0 0 0;
+    color: var(--color-secondary); /* Rosa Neón */
+    text-shadow: 3px 3px 7px rgba(0,0,0,0.8);
+    text-align: center;
+}
+
+.profile-pic-container {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--color-accent); /* Borde Cian Neón */
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8); /* Resplandor Cian */
+}
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Contenedor del escáner */
+#scanner-container {
+    width: 85%; 
+    max-width: 480px; 
+    margin: 20px auto;
+    border: 5px solid var(--color-secondary); /* Borde Rosa Neón más grueso */
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    /* Sombra neón sutil */
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.6); 
+}
+video {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Voltear la cámara para que el operador se vea (Selfie view) */
+    transform: scaleX(-1); 
+}
+#scan-overlay { /* Diseño del marco del QR */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Líneas discontinuas de un color neón distinto al borde */
+    border: 3px dashed var(--color-accent); 
+    box-sizing: border-box;
+    pointer-events: none;
+    border-radius: 17px;
+}
+
+/* Caja de resultados (mensajes de éxito/error) */
+#result-box {
+    min-height: 90px;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 2.3em; 
+    font-weight: bold;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    //font-family: 'Permanent Marker', cursive;
+    transition: all 0.3s ease-in-out; /* Animación de cambio de estado */
+}
+.success {
+    background-color: rgba(50, 205, 50, 0.9); /* Verde brillante sólido */
+    color: var(--color-text-light);
+    border: 3px solid var(--color-success);
+    box-shadow: 0 0 15px rgba(50, 205, 50, 0.8);
+}
+.error {
+    background-color: rgba(255, 69, 0, 0.9); /* Rojo Neón sólido */
+    color: var(--color-text-light);
+    border: 3px solid var(--color-error);
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.8);
+}
+.pending {
+    background-color: rgba(138, 43, 226, 0.4); /* Base morada translúcida */
+    color: var(--color-text-light);
+    border: 2px solid var(--color-secondary);
+}
+
+/* Estilos del overlay de carga */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: var(--color-secondary);
+    font-size: 2.2em;
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+}
+.loader {
+    border: 10px solid rgba(255, 255, 255, 0.3);
+    border-top: 10px solid var(--color-secondary); /* Rosa Neón */
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 25px;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.hidden {
+    display: none !important;
+}
+
+/* Footer text */
+.footer-text {
+    /* Puedes eliminar esta clase si no la usas en el HTML */
+    display: none; 
+}
+
+/* Media Queries */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .main-container { padding: 20px; }
+    .profile-pic-container { width: 100px; height: 100px; }
+    #result-box { font-size: 1.6em; min-height: 70px; }
+    .loader { width: 60px; height: 60px; border-width: 8px; }
+    #loading-overlay p { font-size: 1.4em; }
+}
+@media (max-width: 767px) {
+    .main-container { padding: 15px; }
+    .welcome-text h1 { font-size: 2.5em; }
+    .welcome-text h2 { font-size: 2em; }
+    .profile-pic-container { width: 80px; height: 80px; }
+    #scanner-container { width: 95%; }
+    #result-box { font-size: 1.3em; min-height: 60px; }
+    .loader { width: 50px; height: 50px; border-width: 6px; }
+    #loading-overlay p { font-size: 1.2em; }
+}

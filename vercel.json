@@ -1,9 +1,4 @@
 {
-  "build": {
-    "env": {
-      "WEB_APP_URL": "$NEXT_PUBLIC_WEB_APP_URL"
-    }
-  },
   "installCommand": "npm install", 
   "buildCommand": "npm run build:scanner",
   "outputDirectory": "public" 

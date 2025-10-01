@@ -1,0 +1,11 @@
+{
+  "name": "michyfest50s",
+  "version": "1.0.0",
+  "description": "Frontend estático para el escáner de QR del evento.",
+  "scripts": {
+    "build:scanner": "sed -i '' -e 's|WEB_APP_URL_PLACEHOLDER|'$WEB_APP_URL'|g' scanner.js"
+  },
+  "dependencies": {
+    "jsqr": "^1.4.0"
+  }
+}

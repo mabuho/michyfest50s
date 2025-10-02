@@ -1,4 +1,4 @@
-const WEB_APP_URL = process.env.WEB_APP_URL;
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw9RFSdxfhYWiVzLU-LQug2D_VkP5z0xu_NnRpr8A9GwQGXN7Lqit5CcduPr8PnH_YO/exec";
 const video = document.getElementById('scanner-video');
 const resultBox = document.getElementById('result-box');
 const loadingOverlay = document.getElementById('loading-overlay');

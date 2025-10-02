@@ -1,4 +1,4 @@
-const WEB_APP_URL = window.WEB_APP_URL_GLOBAL;
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw9RFSdxfhYWiVzLU-LQug2D_VkP5z0xu_NnRpr8A9GwQGXN7Lqit5CcduPr8PnH_YO/exec";
 const video = document.getElementById('scanner-video');
 const resultBox = document.getElementById('result-box');
 const loadingOverlay = document.getElementById('loading-overlay');
@@ -57,7 +57,7 @@ function tick() {
               })
               .then(data => {
                   // data.status y data.message vienen de Apps Script (función doGet)
-                  handleServerResponse(data); 
+                  handleSuccess(data); 
               })
               .catch(error => {
                   handleFailure(error);

@@ -1,4 +1,4 @@
-const WEB_APP_URL = 'WEB_APP_URL_PLACEHOLDER';
+const WEB_APP_URL = process.env.WEB_APP_URL;
 const video = document.getElementById('scanner-video');
 const resultBox = document.getElementById('result-box');
 const loadingOverlay = document.getElementById('loading-overlay');

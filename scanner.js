@@ -57,7 +57,7 @@ function tick() {
               })
               .then(data => {
                   // data.status y data.message vienen de Apps Script (función doGet)
-                  handleServerResponse(data); 
+                  handleSuccess(data); 
               })
               .catch(error => {
                   handleFailure(error);
